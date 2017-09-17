@@ -108,7 +108,7 @@
        return (i - 1);
    }
    
-   /* Function to generate a random number between 'low' and 'high' */
+/* Function to generate a random number between 'low' and 'high' */
 int randomNum(int low, int high)
 {
     int num;
