@@ -20,7 +20,7 @@ void greedyKnapsack(struct item*, float, int);
 
 int main(void)
 {
-	int n, i, j;
+	int n, i;
 	float bag;
 	struct item *inventory;
 
@@ -63,7 +63,7 @@ int main(void)
 /* Function definition of quickSort() */
 void quickSort(struct item *inventory, int low, int high)
 {
-	int pivot, i;
+	int pivot;
 	if(low < high)
 	{
 		pivot = partition(inventory, low, high);
