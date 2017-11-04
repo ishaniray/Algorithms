@@ -42,7 +42,7 @@ int main(void)
 		if(x == 'E' || x == 'e')
 			break;
 
-		i = x - '0';	/* converting char digit to int (offset value) */
+		i = x - '0';		/* converting char digit to int (offset value) */
 
 		printf("\nEnter j: ");
 		scanf(" %c", &y);	/* converting char digit to int (offset value) */
@@ -57,7 +57,7 @@ int main(void)
 	} while(1);
 
 	for(i = 0; i < n; ++i)
-		cost[i][i] = INT_MAX; 	/* diagonal elements must have a cost of infinity */
+		cost[i][i] = INT_MAX; 		/* diagonal elements must have a cost of infinity */
 
 	minCost = prim(cost, n, MST);
 	
@@ -89,17 +89,17 @@ int prim(int** cost, int n, int** MST)
 	/* Prim's Algo.: */
 	for(i = 0; i < n - 1; ++i)	/* for each edge to be added to the MST */
 	{
-		minimum = INT_MAX; /* initializing 'minimum' to infinity */
+		minimum = INT_MAX; 	/* initializing 'minimum' to infinity */
 
 		/* Finding the least-cost vertex - a vertex whose addition to the tree would incur the least cost */
-		for(j = 0; j < n; ++j)						/* for each vertex... */
+		for(j = 0; j < n; ++j)					/* for each vertex... */
 		{
-			if(near[j] != -1)						/* ...if the vertex hasn't already been added to the tree... */
+			if(near[j] != -1)				/* ...if the vertex hasn't already been added to the tree... */
 			{
 				if(cost[j][near[j]] < minimum)		/* ...if the distance between the current vertex and the vertex closest to it in the MST is lesser than the current minimum... */
 				{
-					minimum = cost[j][near[j]];		/* ...update 'minimum'... */
-					v = j;							/* ...mark the current vertex for addition to the tree. */
+					minimum = cost[j][near[j]];	/* ...update 'minimum'... */
+					v = j;				/* ...mark the current vertex for addition to the tree. */
 				}
 			}
 		}
@@ -110,15 +110,15 @@ int prim(int** cost, int n, int** MST)
 		MST[i][1] = j;
 
 		minCost = minCost + cost[j][near[j]];	/* cost of the edge between 'j' and 'near[j]' is added to the cost of the MST */
-		near[j] = -1;		/* 'near' value of Vertex 'j' is updated to -1 since it is now in the MST */
+		near[j] = -1;				/* 'near' value of Vertex 'j' is updated to -1 since it is now in the MST */
 
 		/* Updating 'near' values */
 		for(k = 0; k < n; ++k)
 		{
-			if(near[k] != - 1)						/* if Vertex 'k' is yet to be added to MST... */
+			if(near[k] != - 1)				/* if Vertex 'k' is yet to be added to MST... */
 			{
 				if(cost[k][j] < cost[k][near[k]])	/* ...if the distance between Vertex 'k' and the new vertex added to the tree ('j') is lesser than the distance between 'k' and 'near[k]'... */
-					near[k] = j;					/* ...then, among vertices already in the MST, 'j' is now the vertex closest to 'k'. */
+					near[k] = j;			/* ...then, among vertices already in the MST, 'j' is now the vertex closest to 'k'. */
 			}
 		}
 	}
