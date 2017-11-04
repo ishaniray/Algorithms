@@ -82,8 +82,8 @@ int main(void)
 	return 0;
 }
 
-/*	Function implementing Bellman-Ford algorithm.
-	Array indices serve as vertex numbers */
+/* Function implementing Bellman-Ford algorithm.
+   Array indices serve as vertex numbers */
 int* bellmanFord(int** cost, int v, int numofedges, int* negativeCycle)
 {
 	int *distance, **edge, *predecessor, i, j, k, *path, current;
@@ -95,7 +95,7 @@ int* bellmanFord(int** cost, int v, int numofedges, int* negativeCycle)
 	distance = malloc(v * sizeof(int));
 	
 	/* Initializing distance vector */
-	distance[0] = 0;				/* distance from Source to itself is zero */
+	distance[0] = 0;			/* distance from Source to itself is zero */
 	for(i = 1; i < v; ++i)			/* for all other vertices... */
 		distance[i] = INT_MAX;		/* ...distance is initialized to infinity. */
 
@@ -112,10 +112,10 @@ int* bellmanFord(int** cost, int v, int numofedges, int* negativeCycle)
 		{
 			if(cost[i][j] != INT_MAX) 		/* if there is an edge... */
 			{
-				edge[k][0] = i; 			/* ...first column stores Vertex 'i'... */
-				edge[k][1] = j;				/* ...second column stores Vertex 'j'... */
+				edge[k][0] = i; 		/* ...first column stores Vertex 'i'... */
+				edge[k][1] = j;			/* ...second column stores Vertex 'j'... */
 				edge[k][2] = cost[i][j];	/* ...third column stores the distance from Vertex 'i' to Vertex 'j'. */
-				++k;						/* incrementing rowcount */
+				++k;				/* incrementing rowcount */
 			}
 		}
 	}
@@ -128,8 +128,8 @@ int* bellmanFord(int** cost, int v, int numofedges, int* negativeCycle)
 		predecessor[i] = INT_MAX;
 
 	/* Bellman-Ford algo.: */
-	for(i = 0; i < v - 1; ++i)						/* for each vertex other than the starting one */
-		for(j = 0; j < numofedges; ++j)				/* for each edge */
+	for(i = 0; i < v - 1; ++i)				/* for each vertex other than the starting one */
+		for(j = 0; j < numofedges; ++j)			/* for each edge */
 			relax(edge, j, distance, predecessor);	/* perform 'relax' operations */
 
 	/* Execute another pass. If values still change, a negative cycle exists. */
@@ -144,7 +144,7 @@ int* bellmanFord(int** cost, int v, int numofedges, int* negativeCycle)
 
 	/* Building the path.
 	   Idea: For each vertex added to the path, we will see which vertex it is the predecessor to, 
-			 and that would be the next vertex to be added to the path */
+		 and that would be the next vertex to be added to the path */
 
 	path[0] = 0 + 1;	/* The first vertex in the path is the source vertex (1 is added since vertex numbering starts from 1) */
 	current = 0;		/* 'current' keeps track of the most recent vertex added to the path  */
@@ -155,9 +155,9 @@ int* bellmanFord(int** cost, int v, int numofedges, int* negativeCycle)
 		{
 			if(predecessor[i] == current)	/* if the successor of the 'current' vertex is found... */
 			{
-				path[k] = i + 1;			/* ...add it to path (add 1, since vertex numbering starts from 1)... */
-				current = i;				/* ...change 'current' to ith vertex... */
-				break;						/* ...move on to the next iteration. */
+				path[k] = i + 1;	/* ...add it to path (add 1, since vertex numbering starts from 1)... */
+				current = i;		/* ...change 'current' to ith vertex... */
+				break;			/* ...move on to the next iteration. */
 			}
 		}
 	}
