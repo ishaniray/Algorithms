@@ -70,6 +70,8 @@ int main(void)
 	}
 
 	printf("\nCost of the MST = %d\n", minCost);
+	
+	return 0;
 }
 
 /* Function implementing Prim's algorithm.
