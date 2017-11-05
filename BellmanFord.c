@@ -42,9 +42,9 @@ int main(void)
 		i = x - '0' - 1;	/* converting char digit to int (offset value) */
 
 		printf("\nEnter j: ");
-		scanf(" %c", &y);	/* converting char digit to int (offset value) */
+		scanf(" %c", &y);	
 
-		j = y - '0' - 1;
+		j = y - '0' - 1;	/* converting char digit to int (offset value) */
 
 		printf("\nEnter weight: ");
 		scanf("%d", &cost[i][j]);
