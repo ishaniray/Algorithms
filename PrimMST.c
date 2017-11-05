@@ -96,7 +96,7 @@ int prim(int** cost, int n, int** MST)
 		/* Finding the least-cost vertex - a vertex whose addition to the tree would incur the least cost */
 		for(j = 0; j < n; ++j)					/* for each vertex... */
 		{
-			if(near[j] != -1)				/* ...if the vertex hasn't already been added to the tree... */
+			if(near[j] != -1)				/* ...if the vertex hasn't already been added to the tree (joining two vertices already in tree would result in a cycle)... */
 			{
 				if(cost[j][near[j]] < minimum)		/* ...if the distance between the current vertex and the vertex closest to it in the MST is lesser than the current minimum... */
 				{
