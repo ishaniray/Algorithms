@@ -98,7 +98,7 @@ int* bellmanFord(int** cost, int v, int numofedges, int* negativeCycle)
 	for(i = 1; i < v; ++i)			/* for all other vertices... */
 		distance[i] = INFINITY;		/* ...distance is initialized to infinity. */
 
-	/*Creating space for 'edge' matrix, which is a 'numofvertices' by 3 matrix, storing - for each edge - the two endpoints and the distance from one endpoint to the other */
+	/*Creating space for 'edge' matrix, which is a 'numofedges' by 3 matrix, storing - for each edge - the two endpoints and the distance from one endpoint to the other */
 	edge = malloc(numofedges * sizeof(int*));
 	for(i = 0; i < numofedges; ++i)
 		edge[i] = malloc(3 * sizeof(int));
