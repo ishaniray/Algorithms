@@ -84,10 +84,10 @@
         for(i = 0; i < n; ++i)
             parent[i] = -1;     /* since all vertices are separate sets (single-node trees) in the beginning, 'parent' array is initialized to an invalid value */
 
+        quickSort(edgeSet, 0, numofedges - 1);  /* sort the edge-set in non-decreasing order of weight */
+      
         for(i = 0; i < n - 1; ++i)  /* for each of the edges to be added to the MST */
         {
-            quickSort(edgeSet, 0, numofedges - 1);  /* sort the edge-set in non-decreasing order of weight */
-
             j = 0;  /* initialize 'j' to denote first index in the sorted edge-set */
             while(set(edgeSet[j].u, parent) == set(edgeSet[j].v, parent))   /* while a least-cost edge with vertices belonging to different sets is not found... */
                 ++j;                                                        /* ...increment 'j'. */
